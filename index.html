@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz do Nosso Amor ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hearts-bg"></div>
+    <div class="container" id="quiz-container">
+
+        <!-- TELA DE ENTRADA -->
+        <div class="start-screen" id="start-screen">
+            <h1>Quiz do Nosso Amor <span class="emoji">❤️</span></h1>
+            <p>Uma surpresa especial para você!<br>
+            Responda o quiz e descubra nossas melhores memórias juntos.</p>
+            <button id="start-btn"><span>Começar</span></button>
+        </div>
+
+        <!-- CONTEÚDO DO QUIZ -->
+        <div class="quiz-content" id="quiz-content" style="display:none;">
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <!-- Pergunta 1 -->
+            <div class="question active" data-question="1">
+                <h2>Qual dessas fotos representa nosso primeiro encontro?</h2>
+                <div class="options">
+                    <div class="option" data-correct="true" tabindex="0">
+                        <div class="img-glow">
+                        <img src="assets/imagem1.jpg" alt="Restaurante" />
+                    </div>
+                        <span></span>
+                    </div>
+                    <div class="option" data-correct="false" tabindex="0">
+                        <div class="img-glow">
+                        <img src="assets/imagem2.jpg" alt="Praia" />
+                    </div>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <!-- Pergunta 2 -->
+            <div class="question" data-question="2">
+                <h2>Qual dessas viagens foi a mais divertida para nós?</h2>
+                <div class="options">
+                    <div class="option" data-correct="false" tabindex="0">
+                        <div class="img-glow">
+                        <img src="assets/imagem3.jpg" alt="Campo" />
+                    </div>
+                        <span></span>
+                    </div>
+                    <div class="option" data-correct="true" tabindex="0">
+                        <div class="img-glow">
+                        <img src="assets/imagem4.jpg" alt="Montanha" />
+                    </div>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <!-- Pergunta 3 -->
+            <div class="question" data-question="3">
+                <h2>Qual dessas comidas é a sua favorita?</h2>
+                <div class="options">
+                    <div class="option" data-correct="false" tabindex="0">
+                        <div class="img-glow">
+                        <img src="assets/imagem5.jpg" alt="Sushi" />
+                    </div>
+                        <span></span>
+                    </div>
+                    <div class="option" data-correct="true" tabindex="0">
+                        <div class="img-glow">
+                        <img src="assets/imagem6.jpg" alt="Pizza" />
+                    </div>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <!-- Pergunta 4 (com música) -->
+            <div class="question" data-question="4">
+                <h2>Qual dessas músicas marcou nosso relacionamento?</h2>
+                <div class="options">
+                    <div class="option music-option" data-correct="true" data-music="assets/trecho1.mp3" tabindex="0">
+                        <div class="img-glow">
+                        <img src="assets/imagem7.jpg" alt="Nossa Música" />
+                    </div>
+                        <span></span>
+                    </div>
+                    <div class="option music-option" data-correct="false" data-music="assets/trecho2.mp3" tabindex="0">
+                        <div class="img-glow">
+                        <img src="assets/imagem8.jpg" alt="Outra Música" />
+                    </div>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <!-- Pergunta 5 -->
+            <div class="question" data-question="5">
+                <h2>Qual desses lugares queremos conhecer juntos?</h2>
+                <div class="options">
+                    <div class="option" data-correct="false" tabindex="0">
+                        <div class="img-glow">
+                        <img src="assets/imagem9.jpg" alt="Paris" />
+                    </div>
+                        <span></span>
+                    </div>
+                    <div class="option" data-correct="true" tabindex="0">
+                        <div class="img-glow">
+                        <img src="assets/imagem10.jpg" alt="Japão" />
+                    </div>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <!-- Tela de resultado -->
+            <div class="result-screen">
+                <h1 class="result-title"></h1>
+                <div class="memory-content"></div>
+                <button class="memory-btn"><span>💌 Ver Nossas Memórias</span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Áudios -->
+    <audio id="bg-music" src="assets/musica.mp3" loop style="display:none"></audio>
+    <audio id="music-snippet" style="display:none"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

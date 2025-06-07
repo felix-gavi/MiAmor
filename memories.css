@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap');
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #c70039 0%, #111 100%);
+    font-family: 'Montserrat', Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    overflow-x: hidden;
+    transition: background 1.2s cubic-bezier(.4,2,.6,1);
+}
+
+.hearts-bg {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+}
+.hearts-bg::before, .hearts-bg::after {
+    content: "❤️";
+    position: absolute;
+    font-size: 2.5rem;
+    opacity: 0.08;
+    left: 10vw;
+    top: 10vh;
+    animation: floatHeart 8s infinite alternate;
+}
+.hearts-bg::after {
+    left: 70vw;
+    top: 70vh;
+    font-size: 4rem;
+    animation-delay: 2s;
+}
+@keyframes floatHeart {
+    0% { transform: translateY(0) scale(1);}
+    100% { transform: translateY(-30px) scale(1.15);}
+}
+
+.container {
+    background: rgba(20, 20, 20, 0.97);
+    padding: 2.5rem 2rem 2rem 2rem;
+    border-radius: 28px;
+    box-shadow: 0 8px 32px 0 rgba(34,34,34,0.22);
+    width: 95%;
+    max-width: 600px;
+    margin: 2rem auto;
+    position: relative;
+    z-index: 1;
+    border: 2.5px solid #c70039;
+}
+
+.memories-title {
+    font-family: 'Pacifico', cursive;
+    color: #fff;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 12px #c7003933;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .12em solid #fff;
+    min-height: 2.4em;
+}
+
+.memories-title span {
+    font-size: 1.4em;
+    vertical-align: middle;
+}
+
+.memories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+    margin-bottom: 2.5rem;
+}
+
+.memory-card {
+    background: rgba(24,24,24,0.98);
+    border-radius: 20px;
+    box-shadow: 0 2px 16px #c7003922;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.3rem;
+    padding: 1.2rem 1.2rem;
+    border: 2.5px solid #fff;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+    transition: opacity 1s cubic-bezier(.4,2,.6,1), transform 1s cubic-bezier(.4,2,.6,1);
+    background-clip: padding-box;
+    backdrop-filter: blur(2px);
+    animation: pulseCard 3s infinite alternate;
+}
+.memory-card.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1.01);
+    animation: bounceIn 0.8s cubic-bezier(.4,2,.6,1), pulseCard 3s infinite alternate 0.8s;
+}
+@keyframes bounceIn {
+    0% { opacity: 0; transform: translateY(60px) scale(0.95);}
+    60% { opacity: 1; transform: translateY(-12px) scale(1.05);}
+    100% { opacity: 1; transform: translateY(0) scale(1.01);}
+}
+@keyframes pulseCard {
+    0% { box-shadow: 0 2px 16px #c7003922; }
+    100% { box-shadow: 0 8px 32px #ff2d2d55, 0 0 0 4px #fff3; }
+}
+.memory-card:hover {
+    box-shadow: 0 12px 44px #ff2d2d77, 0 0 0 8px #fff3;
+    border-color: #ff2d2d;
+    transition: box-shadow 0.4s, border-color 0.4s;
+}
+
+.memory-card .img-glow {
+    width: 120px;
+    height: 120px;
+    min-width: 120px;
+    margin-bottom: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    background: conic-gradient(
+        from 0deg,
+        #ff2d2d, #ffb300, #ff6a00, #ff2d2d, #ffb300, #ff6a00, #ff2d2d
+    );
+    filter: blur(18px) brightness(1.3);
+    opacity: 0.85;
+    animation: borderGlow 3.5s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+@keyframes borderGlow {
+    0% { filter: blur(18px) brightness(1.3) hue-rotate(0deg);}
+    100% { filter: blur(18px) brightness(1.3) hue-rotate(360deg);}
+}
+.img-glow img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 14px;
+    background: #111;
+    box-shadow: 0 1px 6px #c7003922;
+    border: none;
+    display: block;
+    transition: background 0.2s, transform 0.4s cubic-bezier(.4,2,.6,1), box-shadow 0.4s;
+}
+.img-glow img:hover {
+    transform: scale(1.11) rotate(-2deg);
+    box-shadow: 0 0 44px #ff2d2dcc, 0 0 0 12px #fff2;
+}
+
+.memory-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.memory-text h2 {
+    color: #c70039;
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+}
+.memory-text p {
+    color: #fff;
+    font-size: 1.05rem;
+    margin: 0 0 0.4rem 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+.memory-text audio,
+.memory-text video {
+    margin-top: 0.7rem;
+    border-radius: 12px;
+    width: 100%;
+    background: #222;
+    outline: none;
+}
+
+.memory-btn {
+    background: linear-gradient(90deg, #c70039 0%, #ff002f 100%);
+    color: #fff;
+    border: 2.5px solid #fff;
+    border-radius: 40px;
+    padding: 1rem 2.5rem;
+    font-size: 1.18rem;
+    font-weight: 800;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 16px #c7003944, 0 1px 4px #2222;
+    display: block;
+    margin: 2.5rem auto 0 auto;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.3s, color 0.18s, box-shadow 0.18s, transform 0.3s cubic-bezier(.4,2,.6,1);
+}
+.memory-btn::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 44px;
+    background: conic-gradient(
+        from 0deg,
+        #ff2d2d, #ffb300, #ff6a00, #ff2d2d, #ffb300, #ff6a00, #ff2d2d
+    );
+    filter: blur(8px);
+    opacity: 0.7;
+    animation: borderGlow 4s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+.memory-btn > span {
+    position: relative;
+    z-index: 1;
+}
+.memory-btn:hover {
+    background: linear-gradient(90deg, #ff002f 0%, #c70039 100%);
+    color: #fff;
+    box-shadow: 0 8px 32px #c7003933;
+    transform: scale(1.07) rotate(-2deg);
+    border-color: #fff;
+}
+.memory-btn:hover::after {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+    border-radius: 40px;
+    background: linear-gradient(120deg,rgba(255,255,255,0.25) 0%,rgba(255,255,255,0) 80%);
+    z-index: 2;
+    animation: btnShine 1s linear;
+}
+@keyframes btnShine {
+    0% { opacity: 0; left: -80%; }
+    50% { opacity: 1; left: 60%; }
+    100% { opacity: 0; left: 120%; }
+}
+
+@media (max-width: 700px) {
+    .container { max-width: 98vw; padding: 1.2rem 0.3rem; }
+    .memories-list { gap: 1.2rem; }
+    .memory-card { flex-direction: column; align-items: center; padding: 1rem 0.5rem; }
+    .memory-card .img-glow { width: 90px; height: 90px; min-width: 90px; }
+    .memory-text h2 { font-size: 1rem; }
+    .memory-text p { font-size: 0.98rem; }
+}
